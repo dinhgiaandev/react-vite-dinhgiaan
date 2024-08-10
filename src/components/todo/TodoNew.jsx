@@ -1,4 +1,6 @@
-const TodoNew = () => {
+const TodoNew = (props) => {
+    const { addNewTodo } = props;
+    addNewTodo('Dinhgiaan Dev');
     return (
         <div className='todo-action'>
             <input type="text" className='input-text' placeholder='Enter your task here' />
