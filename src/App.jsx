@@ -6,10 +6,10 @@ import { useState } from 'react'
 
 const App = () => {
 
-  const [todoList, setTodoLits] = useState([
-    { id: 1, name: "Learning React" },
-    { id: 2, name: "Learning Course" }
-  ]);
+  const [todoList, setTodoList] = useState([
+    { id: 1, name: "Nguyễn Nam Phương đẹp gái" },
+    { id: 2, name: "Nguyễn Nam Phương dịu quá" }
+  ])
 
   const dinhgiaan = "Dinhgiaan";
   const age = 25;
@@ -19,9 +19,16 @@ const App = () => {
   }
 
   const addNewTodo = (name) => {
-    alert(`Call me ${name}`)
+    const newTodo = {
+      id: randomIntFromInterval(1, 1000000),
+      name: name
+    }
+    setTodoList([...todoList, newTodo])
   }
-  // addNewTodo();
+
+  const randomIntFromInterval = (min, max) => { // min and max included
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
 
   return (
     <div className="todo-container">
