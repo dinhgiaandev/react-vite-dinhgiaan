@@ -11,7 +11,8 @@ const TodoNew = (props) => {
     // addNewTodo('Dinhgiaan Dev');
 
     const handleClick = () => {
-        addNewTodo(valueInput)
+        addNewTodo(valueInput);
+        setValueInput("");
     }
 
     const handleOnChange = (name) => {
@@ -19,8 +20,10 @@ const TodoNew = (props) => {
     }
     return (
         <div className='todo-action'>
-            <input type="text" className='input-text' placeholder='Enter your task here'
+            <input
+                type="text" className='input-text' placeholder='Enter your task here'
                 onChange={(event) => { handleOnChange(event.target.value) }}
+                value={valueInput}
             />
             <button className='btn-add'
                 onClick={handleClick}
