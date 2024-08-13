@@ -5,11 +5,11 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import ErrorPage from './error-page.jsx';
+import ErrorPage from './pages/error.jsx';
 import LoginPage from './pages/login.jsx';
 import RegisterPage from './pages/register.jsx';
 import UserPage from './pages/user.jsx';
-import ProductPage from './pages/product.jsx';
+import BookPage from './pages/book.jsx';
 import './style/global.css'
 import TodoApp from './components/todo/TodoApp.jsx';
 
@@ -28,8 +28,8 @@ const router = createBrowserRouter([
         element: <UserPage />,
       },
       {
-        path: "/products",
-        element: <ProductPage />
+        path: "/books",
+        element: <BookPage />
       },
     ],
   },
