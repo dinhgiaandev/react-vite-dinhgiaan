@@ -6,10 +6,7 @@ import { useState } from 'react'
 
 const App = () => {
 
-  const [todoList, setTodoList] = useState([
-    // { id: 1, name: "Nguyễn Nam Phương đẹp gái" },
-    // { id: 2, name: "Nguyễn Nam Phương dịu quá" }
-  ])
+  const [todoList, setTodoList] = useState([])
 
   const addNewTodo = (name) => {
     const newTodo = {
