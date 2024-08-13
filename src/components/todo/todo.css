@@ -4,7 +4,7 @@
 }
 
 .todo-title {
-    font-size: 3.5rem;
+    font-size: 2rem;
     color: rgb(127, 107, 228);
     font-weight: 570;
     font-family: fantasy;
@@ -18,8 +18,9 @@
 }
 
 .input-text {
+    font-size: 0.5rem;
     margin-right: 20px;
-    padding: 15px 20px;
+    padding: 5px 10px;
     width: 250px;
     border: none;
     border-radius: 3px;
@@ -30,7 +31,8 @@
 }
 
 .btn-add {
-    padding: 15px 40px;
+    font-size: 0.7rem;
+    padding: 7px 20px;
     width: auto;
     border: none;
     background: rgb(95, 173, 236);
