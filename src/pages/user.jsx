@@ -1,26 +1,29 @@
+import { useEffect, useState } from "react";
 import UserForm from "../components/user/user.form";
 import UserTable from "../components/user/user.table";
-import { useEffect, useState } from 'react';
 import { fetchAllUserAPI } from '../services/api.service';
 
 const UserPage = () => {
 
-    const [dataUser, setDataUser] = useState([]);
+    const [dataUsers, setDataUsers] = useState([])
 
     useEffect(() => {
-        console.log(">>> run useEffect 111")
         loadUser();
-    }, []);
-
+    }, [])
+    //loadUser có tác dụng reload lại table khi tạo mới user
     const loadUser = async () => {
-        const res = await fetchAllUserAPI();
-        setDataUser(res.data);
+        const res = await fetchAllUserAPI()
+        setDataUsers(res.data)
     }
-
     return (
         <div style={{ padding: "20px" }}>
-            <UserForm loadUser={loadUser} />
-            <UserTable dataUser={dataUser} />
+            <UserForm
+                loadUser={loadUser}
+            />
+            <UserTable
+                dataUsers={dataUsers}
+                loadUser={loadUser}
+            />
         </div>
     )
 }

@@ -1,10 +1,9 @@
 import axios from "axios";
 
 /*             instance để cấu hình link db bên api.service.js              */
-
 const instance = axios.create({
     baseURL: import.meta.env.VITE_BACKEND_URL
-});
+})
 
 // Alter defaults after instance has been created
 // instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
@@ -35,6 +34,5 @@ instance.interceptors.response.use(function (response) {
     if (error.response && error.response.data) return error.response.data;
     return Promise.reject(error);
 });
-
 
 export default instance;

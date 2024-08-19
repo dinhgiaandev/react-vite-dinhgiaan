@@ -1,10 +1,11 @@
 import { Button, Input, notification, Modal } from "antd";
-import Password from "antd/es/input/Password";
 import { useState } from "react";
-import { createUserAPI } from "../../services/api.service";
+import { createUserAPI } from '../../services/api.service'
 
 const UserForm = (props) => {
-    const { loadUser } = props;
+
+    const { loadUser } = props
+
     const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -16,14 +17,14 @@ const UserForm = (props) => {
         const res = await createUserAPI(fullName, email, password, phone);
         if (res.data) {
             notification.success({
-                message: "Create New User",
-                description: "Create User Success!"
+                message: 'Create New User',
+                description: 'Create New User Success!'
             })
-            resetAndCloseModal();
+            setIsModalOpen(false);
             await loadUser();
         } else {
             notification.error({
-                message: "Error Create New User",
+                message: 'Error Create New User',
                 description: JSON.stringify(res.message)
             })
         }
@@ -31,10 +32,6 @@ const UserForm = (props) => {
 
     const resetAndCloseModal = () => {
         setIsModalOpen(false);
-        setFullName("");
-        setEmail("");
-        setPassword("");
-        setPhone("");
     }
 
     return (
@@ -57,29 +54,29 @@ const UserForm = (props) => {
                     <div>
                         <span>Full Name</span>
                         <Input
+                            onChange={(event) => { setFullName(event.target.value) }}
                             value={fullName}
-                            onChange={(event) => setFullName(event.target.value)}
                         />
                     </div>
                     <div>
                         <span>Email</span>
                         <Input
+                            onChange={(event) => { setEmail(event.target.value) }}
                             value={email}
-                            onChange={(event) => setEmail(event.target.value)}
                         />
                     </div>
                     <div>
                         <span>Password</span>
                         <Input.Password
+                            onChange={(event) => { setPassword(event.target.value) }}
                             value={password}
-                            onChange={(event) => setPassword(event.target.value)}
                         />
                     </div>
                     <div>
                         <span>Phone</span>
                         <Input
+                            onChange={(event) => { setPhone(event.target.value) }}
                             value={phone}
-                            onChange={(event) => setPhone(event.target.value)}
                         />
                     </div>
                 </div>
