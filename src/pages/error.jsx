@@ -7,7 +7,7 @@ export default function ErrorPage() {
     return (
         <Result
             status="403"
-            title="Sorry, this page did not work. Please return to homepage!"
+            title="Oops!"
             subTitle={error.statusText || error.message}
             extra={
                 <Button type="primary">

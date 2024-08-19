@@ -8,7 +8,7 @@ import { json } from 'react-router-dom';
 
 const UserTable = (props) => {
 
-    const { dataUsers, loadUser } = props;
+    const { dataUsers, loadUser, current, pageSize, total, setCurrent, setPageSize } = props;
 
     const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false);
 
@@ -22,10 +22,9 @@ const UserTable = (props) => {
         {
             title: "No.",
             render: (_, record, index) => {
-                console.log(">>>> check index: ", index)
                 return (
                     <>
-                        {index + 1}
+                        {(index + 1) + (current - 1) * pageSize}
                     </>
                 )
             }
@@ -97,12 +96,37 @@ const UserTable = (props) => {
         }
     }
 
+    const onChange = (pagination, filters, sorter, extra) => {
+        // console.log(">>> check: ", { pagination, filters, sorter, extra })
+        //nếu thay đổi trang: current
+        if (pagination && pagination.current) {
+            if (+pagination.current != +current) // != current | current này là current bộ nhớ của React
+                setCurrent(+pagination.current) //dấu + giúp thay đổi từ string sang số nguyên, ví dụ "5" = 5 Check Network để rõ hơn. Phần: data.meta, current là string, còn total là số nguyên
+        }
+
+        //nếu thay đổi tổng số phần tử trang: pageSize
+        if (pagination && pagination.pageSize) {
+            if (+pagination.pageSize != +pageSize) // != pageSize | pageSize này là pageSize bộ nhớ của React
+                setPageSize(+pagination.pageSize) // dấu + giúp thay đổi từ string sang số nguyên. Check Network để rõ hơn. Phần: data.meta, pageSize là string, còn total là số nguyên
+        }
+    }
+
     return (
         <>
             <Table
                 columns={columns}
                 dataSource={dataUsers}
                 rowKey={"_id"}
+                pagination={
+                    {
+                        current: current,
+                        pageSize: pageSize,
+                        showSizeChanger: true,
+                        total: total,
+                        showTotal: (total, range) => { return (<div> {range[0]}-{range[1]} trên {total} rows</div>) }
+                    }
+                }
+                onChange={onChange}
             />
             <UpdateUser
                 isModalUpdateOpen={isModalUpdateOpen}
