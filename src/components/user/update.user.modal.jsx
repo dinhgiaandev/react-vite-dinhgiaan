@@ -45,12 +45,12 @@ const UpdateUser = (props) => {
     }
     return (
         <Modal
-            title="Create User"
+            title="Update User"
             open={(isModalUpdateOpen)}
             onOk={() => handleSubmitUpdateBtn()}
             onCancel={() => resetAndCloseModal()}
             maskClosable={false}
-            okText={"Create"}
+            okText={"Save"}
         >
             <div style={{ display: "flex", gap: "15px", flexDirection: "column" }}>
                 <div>
