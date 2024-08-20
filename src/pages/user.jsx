@@ -6,9 +6,11 @@ import { fetchAllUserAPI } from '../services/api.service';
 const UserPage = () => {
 
     const [dataUsers, setDataUsers] = useState([]);
-    const [current, setCurrent] = useState(1);
-    const [pageSize, setPageSize] = useState(5);
-    const [total, setTotal] = useState(0);
+
+    //phân trang
+    const [current, setCurrent] = useState(1); //số trang hiện tại
+    const [pageSize, setPageSize] = useState(5); //số phần tử của 1 trang
+    const [total, setTotal] = useState(0); //tổng
 
     //empty array => run once
     //not empty array => next value != prev value: bất cứ khi nào giá trị khác nhau, nó sẽ chạy lại
