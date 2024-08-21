@@ -74,7 +74,11 @@ const LoginPage = () => {
                                 },
                             ]}
                         >
-                            <Input.Password prefix={<LockOutlined />} />
+                            <Input.Password
+                                prefix={<LockOutlined />}
+                                //console.log key khi bấm enter sẽ là Enter
+                                onKeyDown={(event) => { if (event.key === 'Enter') form.submit() }}
+                            />
                         </Form.Item>
 
                         <Form.Item>

@@ -14,15 +14,20 @@ export const AuthWrapper = (props) => {
     const [user, setUser] = useState({
         email: "",
         phone: "",
-        fullName: "Ân love Phương nhiều lắm",
-        role: "Chồng của Nam Phương <3",
+        fullName: "",
+        role: "",
         avatar: "",
         id: ""
     })
+
+    const [isAppLoading, setIsAppLoading] = useState(true);
+
     return (
         //ở đây truyền vào object { user, setUser } tương tự như cách dùng props
-        <AuthContext.Provider value={{ user, setUser }}>
+        <AuthContext.Provider value={{ user, setUser, isAppLoading, setIsAppLoading }}>
             {props.children}
+            {/*console.log bên App coi ví dụ về ParentComponent và ChildComponent để coi thử children là gì */}
+            {/* hoặc  <RouterProvider router={router} /> */}
         </AuthContext.Provider>
     )
 }
