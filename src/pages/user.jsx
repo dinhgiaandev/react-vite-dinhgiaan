@@ -35,7 +35,7 @@ const UserPage = () => {
                 loadUser={loadUser}
             />
             <UserTable
-                dataUsers={dataUsers}
+                dataUsers={dataUsers} //table có data là dựa vào setDataUsers(res.data.result);
                 loadUser={loadUser}
                 current={current}
                 pageSize={pageSize}
