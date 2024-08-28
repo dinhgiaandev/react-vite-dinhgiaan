@@ -4,7 +4,6 @@ import { useState } from 'react';
 import UpdateUser from './update.user.modal';
 import UserDetail from './user.detail';
 import { deleteUserAPI } from '../../services/api.service';
-import { json } from 'react-router-dom';
 
 const UserTable = (props) => {
 
