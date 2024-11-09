@@ -4,15 +4,15 @@ import { createUserAPI, updateUserAPI } from '../../services/api.service'
 
 const UpdateUser = (props) => {
 
-
     const { loadUser, isModalUpdateOpen, setIsModalUpdateOpen, dataUpdate, setDataUpdate } = props;
 
     const [id, setId] = useState("");
     const [fullName, setFullName] = useState("");
     const [phone, setPhone] = useState("");
+    const [email, setEmail] = useState("");
 
     const handleSubmitUpdateBtn = async () => {
-        const res = await updateUserAPI(id, fullName, phone)
+        const res = await updateUserAPI(id, fullName, phone, email)
         if (res.data) {
             notification.success({
                 message: 'Update User',
@@ -33,6 +33,7 @@ const UpdateUser = (props) => {
             setId(dataUpdate._id);
             setFullName(dataUpdate.fullName);
             setPhone(dataUpdate.phone);
+            setEmail(dataUpdate.email)
         }
     }, [dataUpdate])
 
@@ -41,6 +42,7 @@ const UpdateUser = (props) => {
         setId("");
         setFullName("");
         setPhone("");
+        setEmail("");
         setDataUpdate("");
     }
     return (
@@ -72,6 +74,13 @@ const UpdateUser = (props) => {
                     <Input
                         onChange={(event) => { setPhone(event.target.value) }}
                         value={phone}
+                    />
+                </div>
+                <div>
+                    <span>Email</span>
+                    <Input
+                        onChange={(event) => { setEmail(event.target.value) }}
+                        value={email}
                     />
                 </div>
             </div>

@@ -13,21 +13,22 @@ const UserForm = (props) => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const handleSubmitBtn = async () => {
+    const handleCreateBtn = async () => {
         const res = await createUserAPI(fullName, email, password, phone);
         if (res.data) {
             notification.success({
-                message: 'Create New User',
-                description: 'Create New User Success!'
+                message: "Create New User",
+                description: "Create New User Success!"
             })
-            setIsModalOpen(false);
-            await loadUser();
-        } else {
+            loadUser();
+        }
+        else {
             notification.error({
-                message: 'Error Create New User',
-                description: JSON.stringify(res.message)
+                message: "Error Create New User",
+                description: "Create New User Failed!"
             })
         }
+
     }
 
     const resetAndCloseModal = () => {
@@ -49,7 +50,7 @@ const UserForm = (props) => {
             <Modal
                 title="Create User"
                 open={(isModalOpen)}
-                onOk={() => handleSubmitBtn()}
+                onOk={() => { handleCreateBtn() }}
                 onCancel={() => resetAndCloseModal()}
                 maskClosable={false}
                 okText={"Create"}
